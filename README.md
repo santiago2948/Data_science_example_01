@@ -1,73 +1,55 @@
-# 🦠 Dashboard COVID-19 (Datos Sintéticos) — Streamlit
+# Dashboard COVID-19 · Ejercicio EAFIT 2026
 
-Tablero interactivo construido con **Streamlit + Plotly** que simula la evolución
-de una pandemia usando **datos ficticios generados dentro de la propia plataforma**.
-El objetivo es practicar la construcción de un dashboard de ciencia de datos con
-métricas cuantitativas, cualitativas y gráficas con *storytelling*.
+Tablero interactivo de **Streamlit + Plotly** con datos sintéticos de COVID-19.
+Forma parte de un **ejercicio del curso de Ciencia de Datos · Universidad EAFIT (2026)**.
 
-> ⚠️ Todos los datos son **sintéticos**: no corresponden a personas ni casos reales.
+> ⚠️ Todos los datos son **sintéticos**. No corresponden a personas ni casos reales.
 
-## 🎯 Historia que cuenta el dashboard
+**Clave de acceso al dashboard:** `1234`
 
-La edad y las enfermedades previas (comorbilidades) empujan los casos hacia
-cuadros más graves, mientras que **la vacunación actúa como escudo protector**,
-reduciendo la gravedad y la letalidad.
+## Historia que cuenta el dashboard
 
-## 📦 Estructura del proyecto
+El contexto territorial (región, población, temperatura, precipitaciones) y los
+índices demográficos (mortalidad y natalidad), junto con la **edad**, se relacionan
+con la gravedad de los casos. La vacunación actúa como factor protector.
+
+## Estructura
 
 | Archivo | Descripción |
 |---|---|
-| `main_app.py` | Archivo único: generación de datos sintéticos + dashboard de Streamlit. |
-| `datos_covid.csv` | Dataset generado (se crea automáticamente al ejecutar). |
-| `requirements.txt` | Dependencias del proyecto. |
+| `main_app.py` | Generación de datos + dashboard (archivo único). |
+| `datos_covid.csv` | Se crea automáticamente al ejecutar. |
+| `requirements.txt` | Dependencias. |
 
-## 🚀 Instalación y ejecución
-
-1. (Opcional) Crea un entorno virtual:
-
-```bash
-python -m venv .venv
-.venv\Scripts\activate      # Windows PowerShell
-```
-
-2. Instala las dependencias:
+## Instalación y ejecución
 
 ```bash
 pip install -r requirements.txt
-```
-
-3. (Opcional) Genera el CSV manualmente:
-
-```bash
-python main_app.py csv           # 5.000 registros por defecto
-python main_app.py csv 10000     # 10.000 registros
-```
-
-4. Ejecuta el dashboard:
-
-```bash
 streamlit run main_app.py
 ```
 
-## 🧭 Funcionalidades
+CSV opcional por consola:
 
-- **Simulación interactiva:** ajusta el número de registros (1.000–15.000) y la
-  semilla aleatoria desde el panel lateral.
-- **Filtros:** rango de fechas, país, sexo, gravedad y estado de vacunación.
-- **Métricas cuantitativas (KPIs):** casos totales, recuperados, activos,
-  fallecidos, tasa de letalidad, % vacunados, % UCI, edad promedio.
-- **Métricas cualitativas:** grupo etario más afectado, comorbilidad frecuente,
-  fuente de contagio principal, gravedad predominante y ciudad con más casos.
-- **Gráficas dinámicas (Plotly):** curva temporal, dona de gravedad, barras por
-  edad y estado, efecto de la vacunación, dispersión edad/oxígeno y *sunburst*
-  jerárquico país → gravedad → estado.
-- **Descarga** de los datos filtrados en CSV.
+```bash
+python main_app.py csv
+python main_app.py csv 10000
+```
 
-## 🗃️ Diccionario de datos (variables simuladas)
+Al abrir la app, ingresa la clave **1234** para operar el tablero.
 
-`id_paciente`, `fecha_diagnostico`, `pais`, `ciudad`, `edad`, `grupo_edad`,
-`sexo`, `vacunado`, `dosis`, `comorbilidad`, `gravedad`, `estado`, `uci`,
-`saturacion_oxigeno`, `dias_recuperacion`, `fuente_contagio`.
+## Interacción del usuario
+
+- Acceso con clave de operación.
+- Simular entre 1.000 y 15.000 registros y cambiar la semilla.
+- Filtrar por fechas, región, sexo, gravedad, vacunación, edad y temperatura.
+- Elegir la métrica de la **serie de tiempo** y desglosarla por región.
+- Explorar gráficas Plotly y descargar el CSV filtrado.
+
+## Variables principales
+
+`region`, `ciudad`, `poblacion`, `temperatura`, `precipitaciones`,
+`indice_mortalidad`, `indice_natalidad`, `edad`, `grupo_edad`, `sexo`,
+`vacunado`, `gravedad`, `estado`, `fecha_diagnostico`, entre otras.
 
 ---
-Proyecto académico · Fundamentos de Ciencia de Datos.
+Universidad EAFIT · Ciencia de Datos 2026 · Datos ficticios.
